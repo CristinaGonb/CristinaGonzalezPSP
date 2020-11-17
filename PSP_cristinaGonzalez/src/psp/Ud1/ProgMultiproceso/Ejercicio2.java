@@ -9,9 +9,7 @@ public class Ejercicio2 {
 	 */
 	public static void main(String[] args) {
 		// Referencia del directorio que queremos mostrar
-		File directorioActual = new File("/home/cristina/git/Ficheros/Ficheros/PSP/UD01");
-
-		System.out.println(directorioActual.getAbsolutePath());
+		File directorioActual = new File("/home/cristina/Documentos/programacionServicios/PSP_cristinaGonzalez/src/psp/Ud1/ProgMultiproceso");
 		
 		String[] ficheros = directorioActual.list();
 
