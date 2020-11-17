@@ -1,0 +1,6 @@
+Esto es una prueba para un ejercicio de ficheros
+Ejercicio de codificar
+y descodificar
+vamos a hacer una prueba con la clase que nos ha facilitado jesus
+.
+adios
