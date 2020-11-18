@@ -14,16 +14,22 @@ public class Ejercicio6 {
 
 		Runtime rt = Runtime.getRuntime();// Ejecuccion
 		String comandoListar = "lsss";
+		String[] lineaError;
 
 		Process proceso = null;
 
 		try {
 			proceso = rt.exec(comandoListar);
-			
-			//BufferedWriter filtroEscritura = new BufferedWriter(new FileWriter("logComando.txt"));
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
+
+		} catch (Exception e) {
+			lineaError = e.getMessage().split(", ");
+
+			try (BufferedWriter filtroEscritura = new BufferedWriter(new FileWriter("logComando.txt"))){			
+				filtroEscritura.write(lineaError[1]);
+				filtroEscritura.newLine();
+			} catch (IOException f) {
+				System.out.println(f.getMessage());
+			}
 		}
 	}
 
