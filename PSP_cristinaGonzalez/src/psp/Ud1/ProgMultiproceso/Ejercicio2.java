@@ -1,6 +1,10 @@
 package psp.Ud1.ProgMultiproceso;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class Ejercicio2 {
 	/*
@@ -8,17 +12,24 @@ public class Ejercicio2 {
 	 * y los pinte por pantalla.
 	 */
 	public static void main(String[] args) {
-		// Referencia del directorio que queremos mostrar
-		File directorioActual = new File("/home/cristina/Documentos/programacionServicios/PSP_cristinaGonzalez/src/psp/Ud1/ProgMultiproceso");
+		Runtime rt= Runtime.getRuntime();//Ejecucion
 		
-		String[] ficheros = directorioActual.list();
-
-		if (ficheros == null) {
-			System.out.println("No hay ficheros en tu directorio actual");
-		} else {
-			for (int i = 0; i < ficheros.length; i++) {
-				System.out.println(ficheros[i]);
+		String comandoListar="ls --help";
+		Process proceso= null;
+		
+		try {
+			proceso= rt.exec(comandoListar);
+			
+			InputStream is= proceso.getInputStream();//devuelve entrada de flujo de bytes
+			BufferedReader filtroLectura= new BufferedReader(new InputStreamReader(is));
+			
+			String linea;
+			
+			while((linea=filtroLectura.readLine())!=null) {
+				System.out.println(linea);
 			}
+		}catch(IOException e) {
+			System.out.println("Error al ejecutar"+e.getMessage());
 		}
 	}
 }

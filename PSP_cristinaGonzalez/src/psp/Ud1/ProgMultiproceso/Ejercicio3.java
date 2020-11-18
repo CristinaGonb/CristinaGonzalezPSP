@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class Ejercicio3 {
 
@@ -15,34 +17,30 @@ public class Ejercicio3 {
 		 * / Crea una clase Java cuyo método main liste los ficheros del directorio
 		 * actual y los guarde en un fichero de texto.
 		 */
+		Runtime rt = Runtime.getRuntime();// Ejecucion
 
-		// Referencia del directorio que queremos mostrar
+		String comandoListar = "ls --help";
+		Process proceso = null;
 
-		File directorioActual = new File(
-				"/home/cristina/Documentos/programacionServicios/PSP_cristinaGonzalez/src/psp/Ud1/ProgMultiproceso");
+		try {
+			proceso = rt.exec(comandoListar);
 
-		File ficheroTexto= new File("ficheroEjercicio3Copia.txt");
-		try(BufferedWriter filtroEscritura= new BufferedWriter(new FileWriter(ficheroTexto))){
-			
-			String[] ficheros = directorioActual.list();
+			InputStream is = proceso.getInputStream();// devuelve entrada de flujo de bytes
+			BufferedReader filtroLectura = new BufferedReader(new InputStreamReader(is));
 
-			if (ficheros == null) {
-				System.out.println("No hay ficheros en tu directorio actual");
-			} else {
-				for (int i = 0; i < ficheros.length; i++) {
-					System.out.println(ficheros[i]);
-					//Escribo fichero de txt
-					filtroEscritura.write(ficheros[i]+"\n");
-				}
+			BufferedWriter filtroEscritura = new BufferedWriter(new FileWriter("salidaComando.txt"));
+			String linea;
+
+			while ((linea = filtroLectura.readLine()) != null) {
+				filtroEscritura.write(linea);
+				filtroEscritura.newLine();
 			}
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			filtroLectura.close();
+			filtroEscritura.close();
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
-		
+
 	}
 }

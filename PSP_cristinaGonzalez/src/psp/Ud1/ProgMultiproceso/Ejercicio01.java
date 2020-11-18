@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Ejercicio01 {
 
 	public static void main(String[] args) {
-		Runtime rt= Runtime.getRuntime(); //constructor privado
+		Runtime rt= Runtime.getRuntime();//entorno de ejecucion
 		Process p=null;
 		try {
 			p= rt.exec("firefox");
@@ -22,4 +22,16 @@ public class Ejercicio01 {
 		}
 	}//getinput stream devuelve un flujo byte del ls
 
+	/*
+	 * Runtime rt= Runtime.getRuntime();
+	 * String comandoLinux="firefox";
+	 * 
+	 * String comando= comandoLinux;
+	 * 
+	 * try{
+	 * rt.exec(comando);
+	 * } catch(IOException e){
+	 * e.printStackTrace();
+	 * }
+	 */
 }
