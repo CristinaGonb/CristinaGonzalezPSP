@@ -1,1 +1,1 @@
-No existe el archivo o el directorio
+Cannot run program "lsss": error=2, No existe el archivo o el directorio

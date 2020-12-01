@@ -21,8 +21,9 @@ public class Ejercicio4 {
 
 		int valor;
 		try {
-			valor = proceso.waitFor();
+			valor = proceso.waitFor();//comenta stado proceso para el hilo hasta q finaliza proceso
 			System.out.println("El comando " + comandoListar + " contiene los valores " + valor);
+			//cuando devuelve 0 es xq es correcto
 		} catch (InterruptedException e) {
 			System.out.println(e.getMessage());
 		}

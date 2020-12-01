@@ -16,7 +16,7 @@ import java.util.Collections;
 import psp.Ud0.EjercicioProcImpresion.ProcesoImpresion;
 
 
-public class PlanificadorSTF {
+public class PlanificadorSTF  {
 
 	ArrayList<ProcesoImpresion> procesos = new ArrayList<ProcesoImpresion>(); // Create an ArrayList object
 	ProcesoImpresion procesoEnEjecucion;
